@@ -39,6 +39,9 @@ body,
     --ring: 20 14.3% 4.1%;
 
     --radius: 0.5rem;
+
+    --toggle-bg: 0 0% 95%;
+    --toggle-bg-foreground: 20 14.3% 4.1%;
   }
 
   .dark {
@@ -69,6 +72,9 @@ body,
     --border: 12 6.5% 15.1%;
     --input: 12 6.5% 15.1%;
     --ring: 24 5.7% 82.9%;
+
+    --toggle-bg: 0 0% 25%;
+    --toggle-bg-foreground: 0, 0%, 30%;
   }
 }
 

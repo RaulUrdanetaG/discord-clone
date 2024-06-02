@@ -1,13 +1,15 @@
-import type { Config } from "tailwindcss"
+import { withUt } from "uploadthing/tw";
 
-const config = {
+export default withUt({
+  // Your existing Tailwind config
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx,mdx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -17,6 +19,7 @@ const config = {
         "2xl": "1400px",
       },
     },
+
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -36,6 +39,10 @@ const config = {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
+        toggleBg: {
+          DEFAULT: "hsl(var(--toggle-bg))",
+          foreground: "hsl(var(--toggle-bg-foreground))",
+        },
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
@@ -52,6 +59,9 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      backgroundImage: {
+        "upload-svg": "url('/uploadButton.svg')",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -75,6 +85,4 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
-
-export default config
+});
