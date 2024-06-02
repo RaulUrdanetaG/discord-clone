@@ -20,7 +20,13 @@ export default function FileUpload({
   if (value && fileType !== "pdf") {
     return (
       <div className="relative h-20 w-20">
-        <Image fill src={value} alt="Upload" className="rounded-full" />
+        <Image
+          src={value}
+          alt="Upload"
+          className="rounded-full"
+          width="80"
+          height="80"
+        />
         <button
           onClick={() => onChange("")}
           className="bg-rose-500 text-white p-1 rounded-full absolute top-0 right-0 shadow-sm"
@@ -32,14 +38,17 @@ export default function FileUpload({
     );
   }
   return (
-    <UploadButton
-      endpoint={endpoint}
-      onClientUploadComplete={(res) => {
-        onChange(res?.[0].url);
-      }}
-      onUploadError={(error: Error) => {
-        console.log(error);
-      }}
-    />
+    <div>
+      <UploadButton
+        className="mt-4 ut-button:bg-indigo-500 ut-button:ut-uploading:bg-indigo-500 ut-button:ut-readying:bg-indigo-500"
+        endpoint={endpoint}
+        onClientUploadComplete={(res) => {
+          onChange(res?.[0].url);
+        }}
+        onUploadError={(error: Error) => {
+          console.log(error);
+        }}
+      />
+    </div>
   );
 }
