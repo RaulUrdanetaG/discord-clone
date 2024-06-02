@@ -39,6 +39,10 @@ export default withUt({
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
+        toggleBg: {
+          DEFAULT: "hsl(var(--toggle-bg))",
+          foreground: "hsl(var(--toggle-bg-foreground))",
+        },
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
