@@ -11,7 +11,7 @@ body,
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 20 14.3% 4.1%;
+    --foreground: 0, 0%, 30%;
 
     --card: 0 0% 100%;
     --card-foreground: 20 14.3% 4.1%;
@@ -41,7 +41,7 @@ body,
     --radius: 0.5rem;
 
     --toggle-bg: 0 0% 95%;
-    --toggle-bg-foreground: 20 14.3% 4.1%;
+    --toggle-bg-foreground: 0, 0%, 80%;
   }
 
   .dark {
