@@ -1,6 +1,6 @@
 import NavigationSidebar from "@/components/navigation/navigation-sidebar";
 
-export default async function MainLoyut({
+export default async function MainLayout({
   children,
 }: {
   children: React.ReactNode;
