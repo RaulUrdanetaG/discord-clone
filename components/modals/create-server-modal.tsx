@@ -67,7 +67,7 @@ export default function CreateServerModal() {
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
       <DialogContent className="bg-white dark:bg-[#313338] p-0 overflow-hidden">
         <DialogHeader className="text-black dark:text-white pt-8 px-6">
-          <DialogTitle className="text-2xl text-center font-bold">
+          <DialogTitle className="text-2xl text-center font-medium">
             Create Your Server
             <DialogDescription className="text-center text-black dark:text-[#B1B6BD] font-extralight">
               Give your new server a personality with a name and an icon. You
