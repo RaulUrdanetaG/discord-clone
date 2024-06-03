@@ -58,7 +58,7 @@ export default function EditServerModal() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      await axios.post("/api/servers", values);
+      await axios.patch(`/api/servers/${server?.id}`, values);
       form.reset();
       router.refresh();
       onClose();
@@ -74,13 +74,13 @@ export default function EditServerModal() {
 
   return (
     <Dialog open={isModalOpen} onOpenChange={handleClose}>
-      <DialogContent className="bg-white text-black p-0 overflow-hidden">
-        <DialogHeader className="pt-8 px-6">
+      <DialogContent className="bg-white dark:bg-[#313338] p-0 overflow-hidden">
+        <DialogHeader className="text-black dark:text-white pt-8 px-6">
           <DialogTitle className="text-2xl text-center font-bold">
-            Create Your Server
-            <DialogDescription className="text-center text-zinc-500">
-              Your server is where you and your friends hang out. Make yours and
-              start talking.
+            Customize Your Server
+            <DialogDescription className="text-center text-black dark:text-[#B1B6BD] font-extralight">
+              Your server is where you and your friends hang out. Customize yours and
+              keep talking.
             </DialogDescription>
           </DialogTitle>
         </DialogHeader>
@@ -109,13 +109,14 @@ export default function EditServerModal() {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-secondary/70">
+                    <FormLabel className="uppercase text-xs font-bold text-zinc-500 dark:text-[#B3B8BF]">
                       Server Name
                     </FormLabel>
                     <FormControl>
                       <Input
                         disabled={isLoading}
-                        className="bg-zinc-300/50 border-0 focus-visible:ring-0 text-black focus-visible:ring-offset-0"
+                        className="bg-zinc-300/50 dark:bg-[#1E1F22] border-0 focus-visible:ring-0 
+                        text-black dark:text-[#DBDEE1] focus-visible:ring-offset-0 font-medium"
                         placeholder="Your server name"
                         {...field}
                       />
@@ -125,9 +126,9 @@ export default function EditServerModal() {
                 )}
               />
             </div>
-            <DialogFooter className="bg-gray-100 px-6 py-4">
+            <DialogFooter className="bg-gray-100 dark:bg-[#2B2D31] px-6 py-4">
               <Button disabled={isLoading} variant={"primary"}>
-                Create
+                Save
               </Button>
             </DialogFooter>
           </form>
