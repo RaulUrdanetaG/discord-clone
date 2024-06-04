@@ -176,6 +176,16 @@ export default function CreateChannelModal() {
               />
             </div>
             <DialogFooter className="bg-gray-100 dark:bg-[#2B2D31] px-6 py-4">
+              <Button
+                disabled={isLoading}
+                variant={"link"}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onClose();
+                }}
+              >
+                Cancel
+              </Button>
               <Button disabled={isLoading} variant={"primary"}>
                 Create Channel
               </Button>

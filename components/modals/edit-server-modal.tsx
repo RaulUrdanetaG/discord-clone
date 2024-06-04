@@ -79,8 +79,8 @@ export default function EditServerModal() {
           <DialogTitle className="text-2xl text-center font-bold">
             Customize Your Server
             <DialogDescription className="text-center text-black dark:text-[#B1B6BD] font-extralight">
-              Your server is where you and your friends hang out. Customize yours and
-              keep talking.
+              Your server is where you and your friends hang out. Customize
+              yours and keep talking.
             </DialogDescription>
           </DialogTitle>
         </DialogHeader>
@@ -127,6 +127,16 @@ export default function EditServerModal() {
               />
             </div>
             <DialogFooter className="bg-gray-100 dark:bg-[#2B2D31] px-6 py-4">
+              <Button
+                disabled={isLoading}
+                variant={"link"}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onClose();
+                }}
+              >
+                Cancel
+              </Button>
               <Button disabled={isLoading} variant={"primary"}>
                 Save
               </Button>
