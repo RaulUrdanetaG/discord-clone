@@ -179,6 +179,7 @@ export default function CreateChannelModal() {
               <Button
                 disabled={isLoading}
                 variant={"link"}
+                type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   onClose();
@@ -186,7 +187,7 @@ export default function CreateChannelModal() {
               >
                 Cancel
               </Button>
-              <Button disabled={isLoading} variant={"primary"}>
+              <Button disabled={isLoading} variant={"primary"} type="submit">
                 Create Channel
               </Button>
             </DialogFooter>

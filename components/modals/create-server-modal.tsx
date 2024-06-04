@@ -121,6 +121,7 @@ export default function CreateServerModal() {
               <Button
                 disabled={isLoading}
                 variant={"link"}
+                type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   onClose();
@@ -128,7 +129,7 @@ export default function CreateServerModal() {
               >
                 Cancel
               </Button>
-              <Button disabled={isLoading} variant={"primary"}>
+              <Button disabled={isLoading} variant={"primary"} type="submit">
                 Create
               </Button>
             </DialogFooter>

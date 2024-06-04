@@ -130,6 +130,7 @@ export default function EditServerModal() {
               <Button
                 disabled={isLoading}
                 variant={"link"}
+                type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   onClose();
@@ -137,7 +138,7 @@ export default function EditServerModal() {
               >
                 Cancel
               </Button>
-              <Button disabled={isLoading} variant={"primary"}>
+              <Button disabled={isLoading} variant={"primary"} type="submit">
                 Save
               </Button>
             </DialogFooter>
