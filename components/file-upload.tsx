@@ -40,7 +40,8 @@ export default function FileUpload({
   return (
     <div>
       <UploadButton
-        className="mt-4 ut-button:bg-indigo-500 ut-button:ut-uploading:bg-indigo-500 ut-button:ut-readying:bg-indigo-500"
+        className="mt-4 ut-button:bg-indigo-500 ut-button:ut-uploading:bg-indigo-500 
+        ut-button:ut-readying:bg-indigo-500 ut-allowed-content:text-[#B1B6BD]"
         endpoint={endpoint}
         onClientUploadComplete={(res) => {
           onChange(res?.[0].url);
