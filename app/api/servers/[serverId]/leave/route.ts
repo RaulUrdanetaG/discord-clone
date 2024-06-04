@@ -8,23 +8,35 @@ export async function PATCH(
 ) {
   try {
     const profile = await currentProfile();
-    const { name, imageUrl } = await req.json();
 
     if (!profile) return new NextResponse("Unauthorized", { status: 401 });
+
+    if (!params) return new NextResponse("Server ID missing", { status: 400 });
 
     const server = await db.server.update({
       where: {
         id: params.serverId,
+        profileId: {
+          not: profile.id,
+        },
+        members: {
+          some: {
+            profileId: profile.id,
+          },
+        },
       },
       data: {
-        name,
-        imageUrl,
+        members: {
+          deleteMany: {
+            profileId: profile.id,
+          },
+        },
       },
     });
 
     return NextResponse.json(server);
   } catch (error) {
-    console.log("[SERVER_ID_PATCH]", error);
+    console.log("[LEAVE]", error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
