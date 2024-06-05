@@ -50,7 +50,6 @@ export default function ServerSearch() {
   const router = useRouter();
   const params = useParams();
 
-  console.log(serverData);
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
@@ -69,10 +68,10 @@ export default function ServerSearch() {
     setIsOpen(false);
 
     if (type === "member")
-      return router.push(`/server/${params?.serverId}/conversations/${id}`);
+      return router.push(`/servers/${params?.serverId}/conversations/${id}`);
 
     if (type === "channel")
-      return router.push(`/server/${params?.serverId}/channels/${id}`);
+      return router.push(`/servers/${params?.serverId}/channels/${id}`);
   }
 
   return (
@@ -102,30 +101,45 @@ export default function ServerSearch() {
         <CommandInput placeholder="Search all channels and members" />
         <CommandList>
           <CommandEmpty>No results found</CommandEmpty>
-          {serverData.textChannels && (
+          {serverData.textChannels?.length > 0 && (
             <CommandGroup heading="Text Channels">
               {serverData.textChannels?.map((channel) => (
-                <CommandItem key={channel.id}>
+                <CommandItem
+                  key={channel.id}
+                  onSelect={() => {
+                    onClick({ id: channel.id, type: "channel" });
+                  }}
+                >
                   {iconMap["TEXT"]}
                   <span>{channel.name}</span>
                 </CommandItem>
               ))}
             </CommandGroup>
           )}
-          {serverData.audioChannels && (
+          {serverData.audioChannels?.length > 0 && (
             <CommandGroup heading="Voice Channels">
               {serverData.audioChannels?.map((channel) => (
-                <CommandItem key={channel.id}>
+                <CommandItem
+                  key={channel.id}
+                  onSelect={() => {
+                    onClick({ id: channel.id, type: "channel" });
+                  }}
+                >
                   {iconMap["AUDIO"]}
                   <span>{channel.name}</span>
                 </CommandItem>
               ))}
             </CommandGroup>
           )}
-          {serverData.serverMembers && (
-            <CommandGroup heading="Voice Channels">
+          {serverData.serverMembers?.length > 0 && (
+            <CommandGroup heading="Members">
               {serverData.serverMembers?.map((member) => (
-                <CommandItem key={member.id}>
+                <CommandItem
+                  key={member.id}
+                  onSelect={() => {
+                    onClick({ id: member.id, type: "member" });
+                  }}
+                >
                   {roleIconMap[member.role]}
                   <span>{member.profile.name}</span>
                 </CommandItem>

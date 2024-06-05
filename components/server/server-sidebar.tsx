@@ -54,7 +54,8 @@ export default async function ServerSidebar({ serverId }: ServerSidebarProps) {
 
   const members = server?.members.filter((member) => member.id !== profile.id);
 
-  if (!server) return redirect("/");
+  if (!server || !textChannels || !audioChannels || !members)
+    return redirect("/");
 
   const role = server.members.find(
     (member) => member.profileId === profile.id
@@ -69,39 +70,6 @@ export default async function ServerSidebar({ serverId }: ServerSidebarProps) {
           audioChannels={audioChannels}
           serverMembers={members}
         />
-        {/* <div className="mt-2">
-          <ServerSearch
-            data={[
-              {
-                label: "Text Channels",
-                type: "channel",
-                data: textChannels?.map((channel) => ({
-                  id: channel.id,
-                  name: channel.name,
-                  icon: iconMap[channel.type],
-                })),
-              },
-              {
-                label: "Voice Channels",
-                type: "channel",
-                data: audioChannels?.map((channel) => ({
-                  id: channel.id,
-                  name: channel.name,
-                  icon: iconMap[channel.type],
-                })),
-              },
-              {
-                label: "Members",
-                type: "member",
-                data: members?.map((member) => ({
-                  id: member.id,
-                  name: member.profile.name,
-                  icon: roleIconMap[member.role],
-                })),
-              },
-            ]}
-          />
-        </div> */}
         <Separator className="bg-zinc-200 dark:bg-zinc-700 rounded-md my-2" />
         {!!textChannels?.length && (
           <div className="mb-2">

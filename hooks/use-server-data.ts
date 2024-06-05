@@ -3,9 +3,9 @@ import { Channel, Member } from "@prisma/client";
 import { create } from "zustand";
 
 interface ServerItemsData {
-  textChannels?: Channel[];
-  audioChannels?: Channel[];
-  serverMembers?: MembersWithProfile[];
+  textChannels: Channel[];
+  audioChannels: Channel[];
+  serverMembers: MembersWithProfile[];
 }
 
 interface ServerItemsStore {
@@ -14,6 +14,6 @@ interface ServerItemsStore {
 }
 
 export const useServerData = create<ServerItemsStore>((set) => ({
-  serverData: {},
+  serverData: { textChannels: [], audioChannels: [], serverMembers: [] },
   setData: (data) => set({ serverData: data }),
 }));
