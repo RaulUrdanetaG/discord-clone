@@ -2,7 +2,7 @@
 
 import { DiWindows } from "react-icons/di";
 
-import { Search } from "lucide-react";
+import { Hash, Search, Shield, ShieldCheck, Volume2 } from "lucide-react";
 import { KeyboardEvent, useEffect, useState } from "react";
 import {
   CommandInput,
@@ -13,6 +13,8 @@ import {
   CommandItem,
 } from "../ui/command";
 import { useParams, useRouter } from "next/navigation";
+import { useServerData } from "@/hooks/use-server-data";
+import { ChannelType, MemberRole } from "@prisma/client";
 
 interface ServerSearchProps {
   data: {
@@ -28,11 +30,27 @@ interface ServerSearchProps {
   }[];
 }
 
-export default function ServerSearch({ data }: ServerSearchProps) {
+const iconMap = {
+  [ChannelType.TEXT]: <Hash className="mr-2 h-4 w-4" />,
+  [ChannelType.AUDIO]: <Volume2 className="mr-2 h-4 w-4" />,
+  [ChannelType.VIDEO]: <Volume2 className="mr-2 h-4 w-4" />,
+};
+
+const roleIconMap = {
+  [MemberRole.GUEST]: null,
+  [MemberRole.MODERATOR]: (
+    <ShieldCheck className="h-4 w-4 mr-2 text-indigo-500" />
+  ),
+  [MemberRole.ADMIN]: <Shield className="h-4 w-4 mr-2 text-rose-500" />,
+};
+
+export default function ServerSearch() {
+  const { serverData } = useServerData();
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const params = useParams();
 
+  console.log(serverData);
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
@@ -61,8 +79,7 @@ export default function ServerSearch({ data }: ServerSearchProps) {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="group px-2 py-2 rounded-md flex items-center gap-x-2 w-full 
-      hover:bg-zinc-700/10 dark:hover:bg-zinc-700/50 transition"
+        className="group px-2 py-2 rounded-md flex items-center gap-x-2 dark:bg-[#1E1F22]"
       >
         <Search className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
         <p
@@ -85,20 +102,36 @@ export default function ServerSearch({ data }: ServerSearchProps) {
         <CommandInput placeholder="Search all channels and members" />
         <CommandList>
           <CommandEmpty>No results found</CommandEmpty>
-          {data.map(({ label, type, data }) => {
-            if (!data?.length) return null;
-
-            return (
-              <CommandGroup key={label} heading={label}>
-                {data.map(({ id, icon, name }) => (
-                  <CommandItem key={id} onSelect={() => onClick({ id, type })}>
-                    {icon}
-                    <span>{name}</span>
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            );
-          })}
+          {serverData.textChannels && (
+            <CommandGroup heading="Text Channels">
+              {serverData.textChannels?.map((channel) => (
+                <CommandItem key={channel.id}>
+                  {iconMap["TEXT"]}
+                  <span>{channel.name}</span>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          )}
+          {serverData.audioChannels && (
+            <CommandGroup heading="Voice Channels">
+              {serverData.audioChannels?.map((channel) => (
+                <CommandItem key={channel.id}>
+                  {iconMap["AUDIO"]}
+                  <span>{channel.name}</span>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          )}
+          {serverData.serverMembers && (
+            <CommandGroup heading="Voice Channels">
+              {serverData.serverMembers?.map((member) => (
+                <CommandItem key={member.id}>
+                  {roleIconMap[member.role]}
+                  <span>{member.profile.name}</span>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          )}
         </CommandList>
       </CommandDialog>
     </>

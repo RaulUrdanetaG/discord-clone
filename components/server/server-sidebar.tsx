@@ -1,5 +1,5 @@
 import { currentProfile } from "@/lib/current-profile";
-import { ChannelType } from "@prisma/client";
+import { ChannelType, MemberRole } from "@prisma/client";
 import { db } from "@/lib/db";
 
 import ServerHeader from "./server-header";
@@ -10,19 +10,15 @@ import { redirect } from "next/navigation";
 import { ScrollArea } from "../ui/scroll-area";
 import { Separator } from "../ui/separator";
 
-import { Hash, Volume2 } from "lucide-react";
+import { Hash, Shield, ShieldCheck, Volume2 } from "lucide-react";
 import ServerChannel from "./server-channel";
 import ServerFooter from "./server-footer";
+import { useServerData } from "@/hooks/use-server-data";
+import ServerDataSave from "./server-data-save";
 
 interface ServerSidebarProps {
   serverId: string;
 }
-
-const iconMap = {
-  [ChannelType.TEXT]: <Hash className="mr-2 h-4 w-4" />,
-  [ChannelType.AUDIO]: <Volume2 className="mr-2 h-4 w-4" />,
-  [ChannelType.VIDEO]: <Volume2 className="mr-2 h-4 w-4" />,
-};
 
 export default async function ServerSidebar({ serverId }: ServerSidebarProps) {
   const profile = await currentProfile();
@@ -56,6 +52,8 @@ export default async function ServerSidebar({ serverId }: ServerSidebarProps) {
     (channel) => channel.type === ChannelType.AUDIO
   );
 
+  const members = server?.members.filter((member) => member.id !== profile.id);
+
   if (!server) return redirect("/");
 
   const role = server.members.find(
@@ -66,7 +64,12 @@ export default async function ServerSidebar({ serverId }: ServerSidebarProps) {
     <div className="flex flex-col h-full text-primary w-full dark:bg-[#2B2D31] bg-[#F2F3F5]">
       <ServerHeader server={server} role={role} />
       <ScrollArea className="flex-1 px-3">
-        <div className="mt-2">
+        <ServerDataSave
+          textChannels={textChannels}
+          audioChannels={audioChannels}
+          serverMembers={members}
+        />
+        {/* <div className="mt-2">
           <ServerSearch
             data={[
               {
@@ -87,9 +90,18 @@ export default async function ServerSidebar({ serverId }: ServerSidebarProps) {
                   icon: iconMap[channel.type],
                 })),
               },
+              {
+                label: "Members",
+                type: "member",
+                data: members?.map((member) => ({
+                  id: member.id,
+                  name: member.profile.name,
+                  icon: roleIconMap[member.role],
+                })),
+              },
             ]}
           />
-        </div>
+        </div> */}
         <Separator className="bg-zinc-200 dark:bg-zinc-700 rounded-md my-2" />
         {!!textChannels?.length && (
           <div className="mb-2">

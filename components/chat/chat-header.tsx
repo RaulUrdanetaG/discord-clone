@@ -1,6 +1,7 @@
 import { channel } from "diagnostics_channel";
 import { Hash, Menu } from "lucide-react";
 import { MobileToggle } from "../mobile-toggle";
+import ServerSearch from "../server/server-search";
 
 interface ChatHeaderProps {
   serverId: string;
@@ -22,6 +23,7 @@ export default function ChatHeader({
         <Hash className="w-5 h-5 text-zinc-50 dark:text-zinc-400 mr-2" />
       )}
       <p className="font-semibold text-md text-black dark:text-white">{name}</p>
+      <ServerSearch />
     </div>
   );
 }
