@@ -27,10 +27,7 @@ const iconMap = {
 export default async function ServerSidebar({ serverId }: ServerSidebarProps) {
   const profile = await currentProfile();
 
-  if (!profile) {
-    console.log("sidebar");
-    return redirect("/");
-  }
+  if (!profile) return redirect("/");
 
   const server = await db.server.findUnique({
     where: { id: serverId },
