@@ -11,6 +11,9 @@ const openSans = Open_Sans({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Discord",
   description: "Discord clone for Raul urdanetas's portfolio",
+  icons: {
+    icon: "/vercel.svg",
+  },
 };
 
 export default function RootLayout({
