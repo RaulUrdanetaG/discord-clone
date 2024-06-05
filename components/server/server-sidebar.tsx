@@ -12,6 +12,7 @@ import { Separator } from "../ui/separator";
 
 import { Hash, Volume2 } from "lucide-react";
 import ServerChannel from "./server-channel";
+import ServerFooter from "./server-footer";
 
 interface ServerSidebarProps {
   serverId: string;
@@ -130,6 +131,7 @@ export default async function ServerSidebar({ serverId }: ServerSidebarProps) {
           </div>
         )}
       </ScrollArea>
+      <ServerFooter profile={profile} />
     </div>
   );
 }
