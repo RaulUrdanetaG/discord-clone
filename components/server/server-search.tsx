@@ -2,7 +2,14 @@
 
 import { DiWindows } from "react-icons/di";
 
-import { Hash, Search, Shield, ShieldCheck, Volume2 } from "lucide-react";
+import {
+  Hash,
+  Search,
+  Shield,
+  ShieldCheck,
+  ShieldQuestion,
+  Volume2,
+} from "lucide-react";
 import { KeyboardEvent, useEffect, useState } from "react";
 import {
   CommandInput,
@@ -15,6 +22,7 @@ import {
 import { useParams, useRouter } from "next/navigation";
 import { useServerData } from "@/hooks/use-server-data";
 import { ChannelType, MemberRole } from "@prisma/client";
+import { cn } from "@/lib/utils";
 
 interface ServerSearchProps {
   data: {
@@ -37,7 +45,7 @@ const iconMap = {
 };
 
 const roleIconMap = {
-  [MemberRole.GUEST]: null,
+  [MemberRole.GUEST]: <ShieldQuestion className="h-[20px] w-[20.5px] mr-2" />,
   [MemberRole.MODERATOR]: (
     <ShieldCheck className="h-4 w-4 mr-2 text-indigo-500" />
   ),
@@ -88,7 +96,7 @@ export default function ServerSearch() {
           Search
         </p>
         <kbd
-          className="pointer-events-none inline-flex h-5 select-none items-center 
+          className="hidden pointer-events-none h-5 select-none items-center w-[50px] md:inline-flex
         gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground ml-auto"
         >
           <span className="text-sm">
@@ -135,13 +143,19 @@ export default function ServerSearch() {
             <CommandGroup heading="Members">
               {serverData.serverMembers?.map((member) => (
                 <CommandItem
+                  className={cn(
+                    member.role === "GUEST" &&
+                      "text-white hover:text-[#F5F5F4] dark:text-[#0C0A09] dark:hover:text-[#292524]"
+                  )}
                   key={member.id}
                   onSelect={() => {
                     onClick({ id: member.id, type: "member" });
                   }}
                 >
                   {roleIconMap[member.role]}
-                  <span>{member.profile.name}</span>
+                  <span className="text-black dark:text-white">
+                    {member.profile.name}
+                  </span>
                 </CommandItem>
               ))}
             </CommandGroup>
