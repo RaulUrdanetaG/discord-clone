@@ -30,8 +30,9 @@ import { useModal } from "@/hooks/use-modal-store";
 import { ChannelType } from "@prisma/client";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Hash, Volume2 } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { channel } from "diagnostics_channel";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   name: z
@@ -44,6 +45,8 @@ const formSchema = z.object({
 });
 
 export default function EditChannelModal() {
+  const [selectedValue, setSelectedValue] = useState("");
+
   const { isOpen, onClose, type, data } = useModal();
   const router = useRouter();
 
@@ -75,6 +78,10 @@ export default function EditChannelModal() {
     }
   }
 
+  function handleChange(event: string) {
+    setSelectedValue(event);
+  }
+
   function handleClose() {
     form.reset();
     onClose();
@@ -84,6 +91,7 @@ export default function EditChannelModal() {
     if (channel) {
       form.setValue("name", channel.name);
       form.setValue("type", channel.type);
+      setSelectedValue(channel.type);
     }
   }, [channel, form]);
 
@@ -108,14 +116,20 @@ export default function EditChannelModal() {
                     </FormLabel>
                     <FormControl>
                       <RadioGroup
-                        onValueChange={field.onChange}
+                        onValueChange={(e) => {
+                          field.onChange(e);
+                          handleChange(e);
+                        }}
                         defaultValue={field.value}
                         disabled={isLoading}
                         className="flex flex-col gap-2"
                       >
                         <FormItem
-                          className="flex-1 flex items-center justify-between px-4 py-2 rounded-md cursor-pointer
-                          h-[60px] bg-[#EAEBED] dark:bg-[#43444B] hover:bg-[#E1E2E4] dark:hover:bg-[#393C41] "
+                          className={cn(
+                            "flex-1 flex items-center justify-between px-4 py-2 rounded-md cursor-pointer h-[60px] bg-[#F2F3F5] dark:bg-[#2B2D31] hover:bg-[#E8E9EB] dark:hover:bg-[#393C41]",
+                            selectedValue === "TEXT" &&
+                              "dark:bg-[#43444B] dark:hover:bg-[#43444B] bg-[#E1E2E4] hover:bg-[#E1E2E4]"
+                          )}
                         >
                           <FormLabel className="flex-1 flex items-center justify-between gap-3 cursor-pointer">
                             <div className="flex items-center gap-3">
@@ -136,8 +150,11 @@ export default function EditChannelModal() {
                           </FormLabel>
                         </FormItem>
                         <FormItem
-                          className="flex-1 flex items-center  px-4 py-2 rounded-md 
-                           h-[60px] bg-[#EAEBED] dark:bg-[#43444B] hover:bg-[#E1E2E4] dark:hover:bg-[#393C41] "
+                          className={cn(
+                            "flex-1 flex items-center justify-between px-4 py-2 rounded-md cursor-pointer h-[60px] bg-[#F2F3F5] dark:bg-[#2B2D31] hover:bg-[#E8E9EB] dark:hover:bg-[#393C41]",
+                            selectedValue === "AUDIO" &&
+                              "dark:bg-[#43444B] dark:hover:bg-[#43444B] bg-[#E1E2E4] hover:bg-[#E1E2E4]"
+                          )}
                         >
                           <FormLabel className="flex-1 flex items-center justify-between gap-3 cursor-pointer">
                             <div className="flex items-center gap-3">
