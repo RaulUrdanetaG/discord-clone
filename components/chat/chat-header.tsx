@@ -3,6 +3,7 @@ import { Hash, Menu, Users } from "lucide-react";
 import { MobileToggle } from "../mobile-toggle";
 import ServerSearch from "../server/server-search";
 import { Button } from "../ui/button";
+import UserAvatar from "../user-avatar";
 
 interface ChatHeaderProps {
   serverId: string;
@@ -23,6 +24,9 @@ export default function ChatHeader({
         <MobileToggle serverId={serverId} />
         {type === "channel" && (
           <Hash className="w-5 h-5 text-zinc-50 dark:text-zinc-400 mr-2" />
+        )}
+        {type === "conversation" && (
+          <UserAvatar src={imageUrl} className="w-5 h-5 md:h-5 md:w-5 mr-2" />
         )}
         <p className="font-semibold text-md text-black dark:text-white line-clamp-1">
           {name}
