@@ -1,7 +1,5 @@
 "use client";
 
-import { DiWindows } from "react-icons/di";
-
 import {
   Hash,
   Search,
@@ -23,20 +21,6 @@ import { useParams, useRouter } from "next/navigation";
 import { useServerData } from "@/hooks/use-server-data";
 import { ChannelType, MemberRole } from "@prisma/client";
 import { cn } from "@/lib/utils";
-
-interface ServerSearchProps {
-  data: {
-    label: string;
-    type: "channel" | "member";
-    data:
-      | {
-          icon: React.ReactNode;
-          name: string;
-          id: string;
-        }[]
-      | undefined;
-  }[];
-}
 
 const iconMap = {
   [ChannelType.TEXT]: <Hash className="mr-2 h-4 w-4" />,

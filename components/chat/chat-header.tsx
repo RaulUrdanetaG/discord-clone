@@ -1,9 +1,10 @@
-import { channel } from "diagnostics_channel";
-import { Hash, Menu, Users } from "lucide-react";
+import { Hash, Users } from "lucide-react";
 import { MobileToggle } from "../mobile-toggle";
 import ServerSearch from "../server/server-search";
 import { Button } from "../ui/button";
 import UserAvatar from "../user-avatar";
+import { useMembersSection } from "@/hooks/use-members-section";
+import { MobileToggleMembers } from "../mobile-toggle-members";
 
 interface ChatHeaderProps {
   serverId: string;
@@ -33,9 +34,7 @@ export default function ChatHeader({
         </p>
       </aside>
       <aside className="flex items-center gap-1">
-        <Button variant="ghost" className="hover:bg-transparent">
-          <Users />
-        </Button>
+        <MobileToggleMembers />
         <ServerSearch />
       </aside>
     </div>
