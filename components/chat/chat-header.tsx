@@ -1,8 +1,10 @@
-import { channel } from "diagnostics_channel";
-import { Hash, Menu, Users } from "lucide-react";
+import { Hash, Users } from "lucide-react";
 import { MobileToggle } from "../mobile-toggle";
 import ServerSearch from "../server/server-search";
 import { Button } from "../ui/button";
+import UserAvatar from "../user-avatar";
+import { useMembersSection } from "@/hooks/use-members-section";
+import { MobileToggleMembers } from "../mobile-toggle-members";
 
 interface ChatHeaderProps {
   serverId: string;
@@ -24,14 +26,15 @@ export default function ChatHeader({
         {type === "channel" && (
           <Hash className="w-5 h-5 text-zinc-50 dark:text-zinc-400 mr-2" />
         )}
+        {type === "conversation" && (
+          <UserAvatar src={imageUrl} className="w-5 h-5 md:h-5 md:w-5 mr-2" />
+        )}
         <p className="font-semibold text-md text-black dark:text-white line-clamp-1">
           {name}
         </p>
       </aside>
       <aside className="flex items-center gap-1">
-        <Button variant="ghost" className="hover:bg-transparent">
-          <Users />
-        </Button>
+        <MobileToggleMembers />
         <ServerSearch />
       </aside>
     </div>

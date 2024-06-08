@@ -1,5 +1,5 @@
 import { MembersWithProfile } from "@/types";
-import { Channel, Member } from "@prisma/client";
+import { Channel } from "@prisma/client";
 import { create } from "zustand";
 
 interface ServerItemsData {

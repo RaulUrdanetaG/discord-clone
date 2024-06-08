@@ -1,7 +1,5 @@
 "use client";
 
-import { DiWindows } from "react-icons/di";
-
 import {
   Hash,
   Search,
@@ -23,20 +21,6 @@ import { useParams, useRouter } from "next/navigation";
 import { useServerData } from "@/hooks/use-server-data";
 import { ChannelType, MemberRole } from "@prisma/client";
 import { cn } from "@/lib/utils";
-
-interface ServerSearchProps {
-  data: {
-    label: string;
-    type: "channel" | "member";
-    data:
-      | {
-          icon: React.ReactNode;
-          name: string;
-          id: string;
-        }[]
-      | undefined;
-  }[];
-}
 
 const iconMap = {
   [ChannelType.TEXT]: <Hash className="mr-2 h-4 w-4" />,
@@ -96,13 +80,10 @@ export default function ServerSearch() {
           Search
         </p>
         <kbd
-          className="hidden pointer-events-none h-5 select-none items-center w-[50px] md:inline-flex
+          className="hidden pointer-events-none h-5 select-none items-center min-w-[60px] md:inline-flex
         gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground ml-auto"
         >
-          <span className="text-sm">
-            <DiWindows />
-          </span>
-          + k
+          CTRL + k
         </kbd>
       </button>
       <CommandDialog open={isOpen} onOpenChange={setIsOpen}>

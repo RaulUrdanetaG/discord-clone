@@ -2,11 +2,14 @@
 
 import { UserButton } from "@clerk/nextjs";
 import { Profile } from "@prisma/client";
+import SocketIndicator from "../socket-indicator";
 
 export default function ServerFooter({ profile }: { profile: Profile }) {
   return (
     <footer className="dark:bg-[#232428] bg-[#EBEDEF]">
-      <section className="p-2 text-xs">Connection status component</section>
+      <section className="p-2 text-xs">
+        <SocketIndicator />
+      </section>
       <section
         className="flex p-2 gap-2 border-[#D2D4D8] 
         dark:border-[#37393F] border-t-[1px]"
