@@ -6,6 +6,7 @@ import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import ChatMessages from "@/components/chat/chat-messages";
 
 interface ChannelIdProps {
   serverId: string;
@@ -46,7 +47,20 @@ export default async function ChannelIdPage({
       <section className="flex h-full">
         <div className="flex flex-col flex-1 h-full">
           <div className="bg-white dark:bg-[#313338] flex flex-col h-full">
-            <div className="flex-1">Future Messages</div>
+            <ChatMessages
+              name={channel.name}
+              member={member}
+              chatId={channel.id}
+              type="channel"
+              apiUrl="/api/messages"
+              socketUrl="/api.socket/messages"
+              socketQuery={{
+                channelId: channel.id,
+                serverId: channel.serverId,
+              }}
+              paramKey="channelId"
+              paramValue={channel.id}
+            />
             <ChatInput
               name={channel.name}
               type="channel"
