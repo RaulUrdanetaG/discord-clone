@@ -18,7 +18,7 @@ export async function MobileToggleMembers() {
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden hover:bg-transparent"
+          className="lg:hidden hover:bg-transparent"
         >
           <Users />
         </Button>

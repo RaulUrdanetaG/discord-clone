@@ -32,7 +32,7 @@ import { useEffect } from "react";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Server name is required." }),
-  imageUrl: z.string().min(1, { message: "Server image i required" }),
+  imageUrl: z.string().min(1, { message: "Server image is required" }),
 });
 
 export default function EditServerModal() {
@@ -95,6 +95,7 @@ export default function EditServerModal() {
                     <FormItem>
                       <FormControl>
                         <FileUpload
+                          type="button"
                           endpoint="serverImage"
                           value={field.value}
                           onChange={field.onChange}

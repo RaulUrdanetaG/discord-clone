@@ -31,7 +31,7 @@ import { useModal } from "@/hooks/use-modal-store";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Server name is required." }),
-  imageUrl: z.string().min(1, { message: "Server image i required" }),
+  imageUrl: z.string().min(1, { message: "Server image is required" }),
 });
 
 export default function CreateServerModal() {
@@ -86,6 +86,7 @@ export default function CreateServerModal() {
                     <FormItem>
                       <FormControl>
                         <FileUpload
+                          type="button"
                           endpoint="serverImage"
                           value={field.value}
                           onChange={field.onChange}

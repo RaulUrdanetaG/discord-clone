@@ -24,7 +24,7 @@ export default function ChatHeader({
       <aside className="flex items-center">
         <MobileToggle serverId={serverId} />
         {type === "channel" && (
-          <Hash className="w-5 h-5 text-zinc-50 dark:text-zinc-400 mr-2" />
+          <Hash className="w-5 h-5 text-[#6D6F78] mr-2" />
         )}
         {type === "conversation" && (
           <UserAvatar src={imageUrl} className="w-5 h-5 md:h-5 md:w-5 mr-2" />
