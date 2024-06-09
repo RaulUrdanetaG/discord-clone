@@ -5,8 +5,6 @@ import ServerMember from "../server/server-member";
 import { Profile } from "@prisma/client";
 import { ScrollArea } from "../ui/scroll-area";
 import ServerSection from "../server/server-section";
-import { useMembersSection } from "@/hooks/use-members-section";
-import { cn } from "@/lib/utils";
 
 export default function MembersList({
   currentProfile,

@@ -65,7 +65,7 @@ export default function ChatInput({
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <div className="relative p-4 pb-6">
+                <div className="relative p-4">
                   <button
                     type="button"
                     onClick={() => {
