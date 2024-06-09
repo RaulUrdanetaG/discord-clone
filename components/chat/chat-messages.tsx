@@ -9,6 +9,7 @@ import { MessageWithMemberWithProfile } from "@/types";
 import ChatItem from "./chat-item";
 
 import { format } from "date-fns";
+import { ScrollArea } from "../ui/scroll-area";
 
 interface ChatMessagesProps {
   name: string;

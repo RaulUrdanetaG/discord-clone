@@ -38,43 +38,41 @@ export default async function ChannelIdPage({
   if (!channel || !member) return redirect("/");
 
   return (
-    <div className="bg-white dark:bg-[#313338] flex flex-col h-full">
+    <div className="bg-white dark:bg-[#313338] flex flex-col h-full min-h-screen">
       <ChatHeader
         name={channel.name}
         serverId={channel.serverId}
         type="channel"
       />
-      <section className="flex h-full">
-        <div className="flex flex-col flex-1 h-full">
-          <div className="bg-white dark:bg-[#313338] flex flex-col h-full">
-            <ChatMessages
-              name={channel.name}
-              member={member}
-              chatId={channel.id}
-              type="channel"
-              apiUrl="/api/messages"
-              socketUrl="/api/socket/messages"
-              socketQuery={{
-                channelId: channel.id,
-                serverId: channel.serverId,
-              }}
-              paramKey="channelId"
-              paramValue={channel.id}
-            />
-            <ChatInput
-              name={channel.name}
-              type="channel"
-              apiUrl="/api/socket/messages"
-              query={{ channelId: channel.id, serverId: channel.serverId }}
-            />
-          </div>
+      <div className="flex flex-1 h-full min-h-0">
+        <div className="bg-white dark:bg-[#313338] flex flex-col flex-1 h-full min-h-0">
+          <ChatMessages
+            name={channel.name}
+            member={member}
+            chatId={channel.id}
+            type="channel"
+            apiUrl="/api/messages"
+            socketUrl="/api/socket/messages"
+            socketQuery={{
+              channelId: channel.id,
+              serverId: channel.serverId,
+            }}
+            paramKey="channelId"
+            paramValue={channel.id}
+          />
+          <ChatInput
+            name={channel.name}
+            type="channel"
+            apiUrl="/api/socket/messages"
+            query={{ channelId: channel.id, serverId: channel.serverId }}
+          />
         </div>
         {channel.type !== "AUDIO" && (
           <div className="hidden lg:flex max-w-60">
             <MembersList currentProfile={profile} />
           </div>
         )}
-      </section>
+      </div>
     </div>
   );
 }
