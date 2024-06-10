@@ -1,4 +1,7 @@
 import ChatHeader from "@/components/chat/chat-header";
+import ChatInput from "@/components/chat/chat-input";
+import ChatMessages from "@/components/chat/chat-messages";
+import MembersList from "@/components/chat/members-list";
 import { getOrCreateConversation } from "@/lib/conversation";
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
@@ -49,6 +52,29 @@ export default async function MemberIdPage({ params }: MemberIdPageProps) {
         serverId={params.serverId}
         type="conversation"
       />
+      <div className="flex flex-1 h-full min-h-0">
+        <div className="bg-white dark:bg-[#313338] flex flex-col flex-1 h-full min-h-0">
+          <ChatMessages
+            name={otherMember.profile.name}
+            member={currentMember}
+            chatId={conversation.id}
+            type="conversation"
+            apiUrl="/api/direct-messages"
+            socketUrl="/api/socket/direct-messages"
+            socketQuery={{
+              conversationId: conversation.id,
+            }}
+            paramKey="conversationId"
+            paramValue={conversation.id}
+          />
+          <ChatInput
+            name={otherMember.profile.name}
+            type="conversation"
+            apiUrl="/api/socket/direct-messages"
+            query={{ conversationId: conversation.id }}
+          />
+        </div>
+      </div>
     </div>
   );
 }
