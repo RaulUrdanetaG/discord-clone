@@ -76,7 +76,7 @@ export default async function ChannelIdPage({
         </div>
       )}
       {channel.type === ChannelType.AUDIO && (
-        <div className="bg-white dark:bg-[#313338] flex flex-col flex-1 h-full min-h-0">
+        <div className="h-full min-h-0 overflow-hidden">
           <MediaRoom chatId={channel.id} audio={true} video={false} />
         </div>
       )}

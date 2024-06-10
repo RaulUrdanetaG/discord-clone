@@ -5,7 +5,6 @@ export async function GET(req: NextRequest) {
   const room = req.nextUrl.searchParams.get("room");
   const username = req.nextUrl.searchParams.get("username");
 
-  console.log("alo");
   if (!room) {
     return NextResponse.json(
       { error: 'Missing "room" query parameter' },
