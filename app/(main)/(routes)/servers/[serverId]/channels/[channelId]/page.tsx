@@ -45,6 +45,7 @@ export default async function ChannelIdPage({
         name={channel.name}
         serverId={channel.serverId}
         type="channel"
+        channelType={channel.type}
       />
       {channel.type === ChannelType.TEXT && (
         <div className="flex flex-1 h-full min-h-0">
