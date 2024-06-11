@@ -1,5 +1,7 @@
 "use client";
 
+import {EmailCodeFactor} from '@clerk/types'
+
 import { useSignIn } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
