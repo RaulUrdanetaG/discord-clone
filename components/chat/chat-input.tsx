@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem } from "../ui/form";
-import { Plus, Smile } from "lucide-react";
+import { Plus } from "lucide-react";
 import { Input } from "../ui/input";
 
 import axios from "axios";
@@ -83,7 +83,7 @@ export default function ChatInput({
                     }`}
                     {...field}
                   />
-                  <div className="absolute top-7 right-8">
+                  <div className="absolute top-3 right-8">
                     <EmojiPicker
                       onChange={(emoji: string) =>
                         field.onChange(`${field.value} ${emoji}`)
