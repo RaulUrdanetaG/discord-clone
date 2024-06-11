@@ -1,19 +1,16 @@
 import { currentProfile } from "@/lib/current-profile";
-import { ChannelType, MemberRole } from "@prisma/client";
+import { ChannelType } from "@prisma/client";
 import { db } from "@/lib/db";
 
 import ServerHeader from "./server-header";
-import ServerSearch from "./server-search";
 import ServerSection from "./server-section";
 
 import { redirect } from "next/navigation";
 import { ScrollArea } from "../ui/scroll-area";
 import { Separator } from "../ui/separator";
 
-import { Hash, Shield, ShieldCheck, Volume2 } from "lucide-react";
 import ServerChannel from "./server-channel";
 import ServerFooter from "./server-footer";
-import { useServerData } from "@/hooks/use-server-data";
 import ServerDataSave from "./server-data-save";
 
 interface ServerSidebarProps {

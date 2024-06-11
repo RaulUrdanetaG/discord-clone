@@ -4,6 +4,7 @@ import ServerSearch from "../server/server-search";
 
 import UserAvatar from "../user-avatar";
 import { MobileToggleMembers } from "../mobile-toggle-members";
+import ChatVideoButton from "./chat-video-button";
 
 interface ChatHeaderProps {
   serverId: string;
@@ -38,6 +39,7 @@ export default function ChatHeader({
         </p>
       </aside>
       <aside className="flex items-center gap-1">
+        {type === "conversation" && <ChatVideoButton />}
         <MobileToggleMembers />
         <ServerSearch />
       </aside>
