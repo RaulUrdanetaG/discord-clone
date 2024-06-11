@@ -86,3 +86,54 @@ body,
     @apply bg-background text-foreground;
   }
 }
+
+.cl-cardBox {
+  border-radius: 3px;
+}
+
+.cl-card,
+.cl-footer {
+  background: #313338;
+  border-radius: 3px;
+}
+
+.cl-internal-180wb59 {
+  border-radius: 0;
+}
+
+.cl-formButtonPrimary,
+.cl-socialsButton {
+  background: #5865f2;
+  color: white;
+  border: none;
+  border-color: #5865f2;
+  box-shadow: none;
+  border-radius: 3px;
+}
+
+.cl-formButtonPrimary:hover,
+.cl-socialsButton:hover {
+  background: #4752c4;
+}
+
+.cl-internal-n8erpa[data-variant="solid"][data-color="primary"] {
+  box-shadow: none;
+}
+
+.cl-formFieldInput {
+  background: #1e1f22;
+  border-radius: 3px;
+  border: none;
+}
+
+.cl-footerActionLink {
+  color: #00a8fc;
+}
+
+.cl-internal-n8erpa[data-variant="solid"]::after {
+  background: #5865f2;
+}
+
+.cl-internal-sqs40d[data-variant="default"] {
+  box-shadow: none;
+}

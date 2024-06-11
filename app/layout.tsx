@@ -8,6 +8,8 @@ import { ModalProvider } from "@/components/providers/modal-provider";
 import { SocketProvider } from "@/components/providers/socket-provider";
 import { QueryProvider } from "@/components/providers/query-provider";
 
+import { dark } from "@clerk/themes";
+
 const openSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -24,7 +26,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+        layout: {
+          socialButtonsPlacement: "bottom",
+          socialButtonsVariant: "auto",
+        },
+      }}
+    >
       <html lang="en" suppressHydrationWarning>
         <body className={cn(openSans.className, "bg-white dark:bg-[#313338]")}>
           <ThemeProvider
