@@ -35,7 +35,11 @@ export default function ServerMember({
       }}
     >
       <UserAvatar className="max-h-5 max-w-5" src={member.profile.imageUrl} />
-      <p className="text-start line-clamp-1">{member.profile.name}</p>
+      {member.profile.id === currentProfile.id ? (
+        <p className="text-start line-clamp-1">You</p>
+      ) : (
+        <p className="text-start line-clamp-1">{member.profile.name}</p>
+      )}
       <div className="max-h-5 max-w-5">{roleIconMap[member.role]}</div>
     </button>
   );
