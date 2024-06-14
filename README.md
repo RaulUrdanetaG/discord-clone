@@ -1,5 +1,5 @@
 # Portfolio discord clone
-This is a discord clone app that tries to replicate the actual discord UI, with most of its basic features, including server creation and management, invite links to join the server, user managment with roles, text and audio channels with real time chat and videoconferencing, direct messages between server members adn more!
+This is a discord clone app that tries to replicate the actual discord UI, with most of its basic features, including server creation and management, invite links to join the server, user managment with roles; text and audio channels with real time chat and videoconferencing, direct messages between server members and more!
 
 ## Content table
 
@@ -32,8 +32,6 @@ In completing this project, my primary objectives were to deepen my understandin
 ![App UI](/public/discord-clone-final-app.png)
 
 ### Database Schema
-
-
 ![DB schema](/public//db-schema.webp)
 <a href='https://dbdiagram.io/d/6669d0b2a179551be6b89f1f'>Or look at it in here<a/>
 
@@ -51,7 +49,7 @@ $ npm install
 # Create build
 $ npm run build
 
-# RUn the app
+# Run the app
 $ npm start
 ```
 
