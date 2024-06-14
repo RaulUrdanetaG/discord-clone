@@ -46,13 +46,13 @@ $ git clone https://github.com/RaulUrdanetaG/discord-clone.git
 $ cd discord-clone
 
 # Install dependencies
-npm install 
+$ npm install 
 
 # Create build
-npm run build
+$ npm run build
 
 # RUn the app
-npm start
+$ npm start
 ```
 
 ## Inspiration
