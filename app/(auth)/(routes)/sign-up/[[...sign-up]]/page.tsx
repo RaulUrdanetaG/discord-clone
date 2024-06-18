@@ -6,10 +6,11 @@ import { SignUp } from "@clerk/nextjs";
 
 export default function Page() {
   return (
-    <div>
-      {/* <Button onClick={onClick} /> */}
+    <div className="relative">
       <SignUp />
-      <TestUserButton />
+      <div className="relative -top-10 z-50">
+        <TestUserButton />
+      </div>
     </div>
   );
 }

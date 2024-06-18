@@ -10,6 +10,8 @@ import { QueryProvider } from "@/components/providers/query-provider";
 
 import { dark } from "@clerk/themes";
 
+import { localization } from "@/localization";
+
 const openSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -27,6 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider
+      localization={localization}
       appearance={{
         baseTheme: dark,
         layout: {
