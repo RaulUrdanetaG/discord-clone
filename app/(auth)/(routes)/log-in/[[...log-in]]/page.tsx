@@ -6,9 +6,11 @@ import { SignIn } from "@clerk/nextjs";
 
 export default function Page() {
   return (
-    <div>
+    <div className="relative">
       <SignIn />
-      <TestUserButton />
+      <div className="relative -top-10 z-50">
+        <TestUserButton />
+      </div>
     </div>
   );
 }
