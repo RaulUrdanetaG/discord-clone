@@ -18,7 +18,7 @@ This is a discord clone app that tries to replicate the actual discord UI, with 
 <img alt="TypeScript" src="https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" />
 <img alt="Tailwind" src="https://img.shields.io/badge/-Tailwind-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white" />
 <img alt="PostgreSQL" src="https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" />
-<img alt="SocketIo" src="https://img.shields.io/badge/-Socket.io-25c2a0?style=flat-square&logo=socketdotio&logoColor=white" />
+<img alt="SocketIo" src="https://img.shields.io/badge/-Socket.io-25c2a0?style=flat-square&logoColor=white" />
 <img alt="SocketIo" src="https://img.shields.io/badge/-LiveKit-06b7db?style=flat-square&logo=livekit&logoColor=white" />
 <img alt="Zod" src="https://img.shields.io/badge/-Zod-3E67B1?style=flat-square&logo=zod&logoColor=white" />
 <img alt="Prisma" src="https://img.shields.io/badge/-Prisma-2D3748?style=flat-square&logo=prisma&logoColor=white" />
