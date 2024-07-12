@@ -7,7 +7,6 @@ This is a discord clone app that tries to replicate the actual discord UI, with 
 * [Motivation](#motivation)
 * [App](#app)
   * [Database Schema](#database-schema)
-* [Installation](#installation)
 * [Inspiration](#inspiration)
 
 
@@ -34,24 +33,6 @@ In completing this project, my primary objectives were to deepen my understandin
 ### Database Schema
 ![DB schema](/public//db-schema.webp)
 <a href='https://dbdiagram.io/d/6669d0b2a179551be6b89f1f'>Or look at it in here.<a/>
-
-## Installation
-```bash
-# Clone this repo 
-$ git clone https://github.com/RaulUrdanetaG/discord-clone.git
-
-# Go into the repository
-$ cd discord-clone
-
-# Install dependencies
-$ npm install 
-
-# Create build
-$ npm run build
-
-# Run the app
-$ npm start
-```
 
 ## Inspiration
 This app is based on CodeWithAntonio discord clone Tutorial.
