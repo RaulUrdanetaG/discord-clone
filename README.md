@@ -26,7 +26,7 @@ This is a discord clone app that tries to replicate the actual discord UI, with 
 ## Motivation
 In completing this project, my primary objectives were to deepen my understanding of Next.js and to get a good understanding about web socket, and videoconferencing implementations as my primary focus lies in backend development. By immersing myself in these technologies, I aimed to enhance my skill set and gain practical experience that would not only solidify my knowledge but also enable me to build more robust and real-time web applications.
 ## App
-## [Live Website](https://discord-clone-raul-urdaneta.up.railway.app/)(demo user avilable)👈
+## [Live Website](https://discord-clone-raul-urdaneta.up.railway.app/) (demo user avilable)👈
 
 ![App UI](/public/discord-clone-final-app.png)
 
